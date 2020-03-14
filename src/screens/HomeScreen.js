@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Context } from '../context/ToDoContext';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
-    const { state, addToDo } = useContext(Context);
+    const { state, addToDo, deleteToDo } = useContext(Context);
 
+    const navigation = useNavigation();
+
+    
 
     return <View>
         <Text>Home Screen</Text>
@@ -13,11 +17,16 @@ const HomeScreen = () => {
         <FlatList 
         data={state}
         keyExtractor={(toDo) => toDo.title}
-        renderItem={({ item}) => {
-            return <View style={styles.row}>
-                <Text style={styles.title}>{item.title}</Text>
-                <FontAwesome name="trash" style={styles.trashIcon}/>
-            </View>
+        renderItem={({ item }) => {
+            return <TouchableOpacity onPress={() => navigation.navigate('ToDoItem', {id: item.id})}>
+                <View style={styles.row}>
+                    <Text style={styles.title}>{item.title} - id: {item.id}</Text>
+                    <TouchableOpacity onPress={() => deleteToDo(item.id)}>
+                        <FontAwesome name="trash" style={styles.trashIcon}/>
+                    </TouchableOpacity>  
+                </View>
+            </TouchableOpacity>
+            
         }}
         />
     </View>
