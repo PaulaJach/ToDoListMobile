@@ -11,9 +11,12 @@ const ToDoItemScreen = ({ route, navigation }) => {
     })
 
      return <View>
-        <Text>{ item.title }</Text>
+        <Text>{item.title}</Text>
+        <Text>{item.detail}</Text>
     </View>
 };
+
+
 
 const styles = StyleSheet.create({});
 

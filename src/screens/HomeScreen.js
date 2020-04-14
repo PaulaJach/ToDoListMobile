@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
-    const { state, addToDo, deleteToDo } = useContext(Context);
+    const { state, deleteToDo } = useContext(Context);
 
     const navigation = useNavigation();
 
@@ -13,7 +13,6 @@ const HomeScreen = () => {
 
     return <View>
         <Text>Home Screen</Text>
-        <Button title="add toDo" onPress={addToDo}/>
         <FlatList 
         data={state}
         keyExtractor={(toDo) => toDo.title}

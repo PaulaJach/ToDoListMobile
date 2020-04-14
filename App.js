@@ -7,6 +7,8 @@ import { Provider } from './src/context/ToDoContext';
 import ToDoItemScreen from './src/screens/ToDoItemScreen';
 import CreateToDoScreen from './src/screens/CreateToDoScreen';
 import CreateButton from './src/components/CreateButton';
+import EditButton from './src/components/EditButton';
+import EditScreen from './src/screens/EditScreen';
 
 
 const Stack = createStackNavigator();
@@ -30,8 +32,19 @@ const App = () => {
 
              }}
             />
-          <Stack.Screen name="ToDoItem" component={ToDoItemScreen} />
+          <Stack.Screen 
+            name="ToDoItem" 
+            component={ToDoItemScreen}
+            options={
+              ({ navigation, route }) => ({
+                headerRight: () => <EditButton id={route.params.id} />,
+              })
+              
+    
+            
+            } />
           <Stack.Screen name="CreateToDo" component={CreateToDoScreen} />
+          <Stack.Screen name="Edit" component={EditScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
