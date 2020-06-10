@@ -39,9 +39,6 @@ const App = () => {
               ({ navigation, route }) => ({
                 headerRight: () => <EditButton id={route.params.id} />,
               })
-              
-    
-            
             } />
           <Stack.Screen name="CreateToDo" component={CreateToDoScreen} />
           <Stack.Screen name="Edit" component={EditScreen} />

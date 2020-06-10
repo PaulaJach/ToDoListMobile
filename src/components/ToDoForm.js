@@ -15,7 +15,6 @@ const ToDoForm = ({onSubmit, initialValues,}) => {
         title="save"
         onPress={() => onSubmit(newToDo, detail)}
         
-
         
         />
 </View>
